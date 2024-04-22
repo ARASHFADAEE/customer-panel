@@ -80,21 +80,21 @@
                 </form>
 
                 <?php if (isset($_GET['number']) && $_GET['number'] == 0) { ?>
-                    <p class="alert alert-danger">
+                    <p class="alert alert-danger p-3">
                         شماره تلفن همراه نامعتبر میباشد
                     </p>
                     <?php
                 }
                 ?>
                 <?php if (isset($_GET['add_customer']) && $_GET['add_customer'] == true) { ?>
-                    <p class="success alert-success">
+                    <p class="success alert-success p-3">
                         مشتری با موفقیت افزوده شد
                     </p>
                     <?php
                 }
                 ?>
                 <?php if (isset($_GET['usernot']) && $_GET['usernot'] == true) { ?>
-                    <p class="danger alert-danger">
+                    <p class="danger alert-danger p-3">
                         این مشتری قبلا اضافه شده
                     </p>
                     <?php

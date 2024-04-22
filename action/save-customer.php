@@ -8,12 +8,12 @@ if (isset($_POST['save_customer'])) {
     $phone_number = $_POST['phone'];
     if (preg_match("/^([0][9][0-9]{9})$/", $phone_number)) {
 
-//        verify customer
+        //verify customer
         try {
             $name = $_POST['name'];
             $phone = $_POST['phone'];
 
-// Check if the name or phone already exists in the database
+            // Check if the name or phone already exists in the database
             $sql_v = "SELECT * FROM `customers` WHERE name = :name OR phone = :phone";
             $stmt = $conn->prepare($sql_v);
             $stmt->bindParam(":name", $name);
@@ -23,9 +23,9 @@ if (isset($_POST['save_customer'])) {
             $hasuser = $stmt->rowCount();
             if ($hasuser > 0) {
                 header('location: ../add-customer.php?usernot=1');
+                exit();
             }else{
-
-                //       save customer
+                //  save customer
                 try {
                     $name = $_POST['name'];
                     $phone = $_POST['phone'];
@@ -54,9 +54,6 @@ if (isset($_POST['save_customer'])) {
                 }
 
             }
-
-            //redirect
-//        header('location:../index.php');
         } catch (PDOException $e) {
             echo $e;
         }
