@@ -2,6 +2,7 @@
 
 
 include '../config/database.php';
+include '../config/sms-panel.php';
 
 
 if (isset($_POST['save_customer'])) {
@@ -46,6 +47,7 @@ if (isset($_POST['save_customer'])) {
                     //exe
                     $stmt->execute();
 
+                    $sms->send_sms_welcome($phone ,$name,9714 );
 
                     //redirect
                     header('location: ../add-customer.php?add_customer=true');
