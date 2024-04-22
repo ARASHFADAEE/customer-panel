@@ -93,6 +93,13 @@
                     <?php
                 }
                 ?>
+                <?php if (isset($_GET['usernot']) && $_GET['usernot'] == true) { ?>
+                    <p class="danger alert-danger">
+                        این مشتری قبلا اضافه شده
+                    </p>
+                    <?php
+                }
+                ?>
 
 
             </div>
