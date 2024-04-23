@@ -1,5 +1,13 @@
 
+<?php
+include_once './config/loader.php';
 
+$sql = "SELECT * FROM `customers`";
+$hasuser = $conn->query($sql);
+$hasuser->execute();
+$data = $hasuser->rowCount();
+
+?>
 
 
 <!DOCTYPE html>
@@ -13,7 +21,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-  <title>پنل مدیریت |خری  سریع</title>
+  <title>پنل مدیریت-مدیریت مشتریان آریاس کد</title>
 
   <!-- Font Awesome Icons -->
   <link rel="stylesheet" href="plugins/font-awesome/css/font-awesome.min.css">
@@ -86,7 +94,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <div class="inner">
               <h3>۱۵۰</h3>
 
-              <p>سفارشات جدید</p>
+              <p> پروژه ها</p>
             </div>
             <div class="icon">
               <i class="ion ion-bag"></i>
@@ -112,9 +120,9 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <!-- small box -->
           <div class="small-box bg-warning">
             <div class="inner">
-              <h3>۴۴</h3>
+              <h3><?php echo $data ; ?></h3>
 
-              <p>کاربران ثبت شده</p>
+              <p> مشتریان ثبت شده</p>
             </div>
             <div class="icon">
               <i class="ion ion-person-add"></i>

@@ -12,15 +12,16 @@ class sms
         $this->apikey = $apikey;
     }
 
-    public function send_sms_welcome($phone , $paramt , $template_id )
-    {
+
+    public function send_sms_api($phone,$paramt1,$template_id){
         $apiKey = $this->apikey;
         $params = [
             "mobile" => "+98$phone",
             "method" => "sms",
             "templateID" => $template_id,
             "params" => [
-                "$paramt"
+                "$paramt1"
+
 
             ]
         ];
@@ -36,7 +37,18 @@ class sms
         ));
         $response = curl_exec($curl);
         curl_close($curl);
+    }
+
+    public function send_sms_welcome($phone , $paramt , $template_id )
+    {
+
+        $this->send_sms_api($phone , $paramt ,$template_id);
+
         
+    }
+
+    public function send_sms_payment($phone,$paramt,$template_id){
+        $this->send_sms_api($phone,$paramt,$template_id);
     }
 
 
