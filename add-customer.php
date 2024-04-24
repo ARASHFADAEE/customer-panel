@@ -1,7 +1,56 @@
-<?php include './partials/head/head.php' ?>
+<?php include './partials/head/head.php';
+include_once './config/loader.php';
+$auth->is_login();
+
+?>
 
 
 <body class="hold-transition sidebar-mini">
+<?php if (isset($_GET['number']) && $_GET['number'] == 0) { ?>
+
+<script>
+    Swal.fire({
+        icon: "error",
+        title: "اووووپس...",
+        text: "شماره مورد نظر نامعتبر میباشد",
+        footer: 'ناموسا شماره رو از کجات در اوردی؟'
+    });
+</script>
+<?php } ?>
+
+
+<?php if (isset($_GET['add_customer']) && $_GET['add_customer'] == true) { ?>
+    <script>
+
+        Swal.fire({
+            icon: "success",
+            title: "        مشتری با موفقیت افزوده شد",
+            showConfirmButton: false,
+            timer: 1500
+        });
+
+    </script>
+
+
+    <?php
+}
+?>
+
+
+<?php if (isset($_GET['usernot']) && $_GET['usernot'] == true) { ?>
+
+    <script>
+        Swal.fire({
+            icon: "error",
+            title: "اووووپس...",
+            text: "این مشتری قبلا اضافه شده",
+            footer: 'کم تر بزن!!'
+        });
+    </script>
+
+    <?php
+}
+?>
 <div class="wrapper">
 
     <!-- Navbar Start  -->
@@ -79,27 +128,9 @@
                     </div>
                 </form>
 
-                <?php if (isset($_GET['number']) && $_GET['number'] == 0) { ?>
-                    <p class="alert alert-danger p-3">
-                        شماره تلفن همراه نامعتبر میباشد
-                    </p>
-                    <?php
-                }
-                ?>
-                <?php if (isset($_GET['add_customer']) && $_GET['add_customer'] == true) { ?>
-                    <p class="success alert-success p-3">
-                        مشتری با موفقیت افزوده شد
-                    </p>
-                    <?php
-                }
-                ?>
-                <?php if (isset($_GET['usernot']) && $_GET['usernot'] == true) { ?>
-                    <p class="danger alert-danger p-3">
-                        این مشتری قبلا اضافه شده
-                    </p>
-                    <?php
-                }
-                ?>
+
+
+
 
 
             </div>

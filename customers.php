@@ -1,7 +1,11 @@
 <?php include './partials/head/head.php' ?>
 
 
-<?php include './config/loader.php' ?>
+<?php include './config/loader.php' ;
+
+$auth->is_login();
+
+?>
 
 
 

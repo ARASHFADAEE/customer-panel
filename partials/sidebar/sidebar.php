@@ -3,7 +3,7 @@
     <a href="index3.html" class="brand-link">
       <img src="dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3"
            style="opacity: .8">
-      <span class="brand-text font-weight-light">پنل vip</span>
+      <span class="brand-text font-weight-light">پنل مدیریت مشتریان</span>
     </a>
 
     <!-- Sidebar  -->
@@ -15,7 +15,9 @@
             <img src="./img/3db2bb65-5da9-4487-b713-0bd00035f201.jpg" class="img-circle elevation-2" alt="User Image">
           </div>
           <div class="info">
-            <a href="#" class="d-block">آرش فدائی</a>
+            <a href="#" class="d-block"><?php if(isset($_SESSION['user_name'])){
+                    echo  $_SESSION['user_name'].' '.'خوش آمدید ' ;
+                }  ?></a>
           </div>
         </div>
 
@@ -35,7 +37,7 @@
             </li>
             <li class="nav-item has-treeview menu-open">
               <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-shopping-bag"></i>
+                <i class="nav-icon fa fa-users"></i>
                 <p>
                   مشتریان
                   <i class="right fa fa-angle-left"></i>
@@ -70,11 +72,11 @@
               </ul>
             </li>
             <li class="nav-item">
-              <a href="#" class="nav-link">
-                <i class="nav-icon fa fa-th"></i>
+              <a href="./log-out.php" class="nav-link">
+                <i class="nav-icon fa fa-power-off"></i>
                 <p>
-                  دایرکت اتوماتیک
-                  <span class="right badge badge-danger">به زودی</span>
+                    خروج از پنل
+                  <span class="right badge badge-danger">خروج از ماتریکس</span>
                 </p>
               </a>
             </li>
