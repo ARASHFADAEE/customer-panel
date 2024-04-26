@@ -2,7 +2,6 @@
 <?php
 
 include_once './config/loader.php';
-$auth->is_login();
 
 $sql = "SELECT * FROM `customers`";
 $hasuser = $conn->query($sql);

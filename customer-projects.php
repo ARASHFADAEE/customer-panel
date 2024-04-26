@@ -1,24 +1,24 @@
-<?php include './partials/head/head.php' ?>
-
-
-<?php include './config/loader.php' ;
-
-
-
-?>
-
-
-
 <?php
+require_once ('./config/loader.php');
+include './partials/head/head.php';
+$customer_id=$_GET['customer_id'];
+$sql = "SELECT * FROM `project` WHERE `customer_id`= :customer_id";
+$sql_user = "SELECT * FROM `customers` WHERE `id`= '$customer_id'";
 
-$sql = "SELECT * FROM `customers`";
-$hasuser = $conn->query($sql);
-$hasuser->execute();
-$data = $hasuser->fetchAll(PDO::FETCH_OBJ);
-$row_member = $hasuser->rowCount();
+$hasproject = $conn->prepare($sql);
+$hasproject->bindParam(':customer_id' , $customer_id);
+$hasproject->execute();
+$data = $hasproject->fetchAll(PDO::FETCH_OBJ);
+$row_member = $hasproject->rowCount();
 
 
+
+
+$user_name = $conn->query($sql_user);
+$user_name->execute();
+$data_name = $user_name->fetch(PDO::FETCH_OBJ);
 ?>
+
 <body class="hold-transition sidebar-mini">
 <div class="wrapper">
 
@@ -53,8 +53,8 @@ $row_member = $hasuser->rowCount();
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">مشتریان</h3>
-                            <h4 class="card-title" style="float: left;">تعداد مشتریان : <?php echo $row_member;?></h4>
+                            <h3 class="card-title">نام مشتری :<?php echo $data_name->name;?></h3>
+                            <h4 class="card-title" style="float: left;">تعداد پروژه های مشتری : <?php echo $row_member;?></h4>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">
@@ -71,25 +71,25 @@ $row_member = $hasuser->rowCount();
                                             <tr role="row">
                                                 <th class="sorting_asc" tabindex="0" aria-controls="example2"
                                                     rowspan="1" colspan="1" aria-sort="ascending"
-                                                    aria-label="نام و نام خانوادگی: activate to sort column descending">
-                                                    نام و نام خانوادگی
+                                                    aria-label="نام پروژه(نام سایت): activate to sort column descending">
+                                                    نام پروژه(نام سایت)
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                                     colspan="1"
-                                                    aria-label="شماره تلفن همراه: activate to sort column ascending">
-                                                    شماره تلفن همراه
+                                                    aria-label="هزینه پروژه(تومان): activate to sort column ascending">
+                                                    هزینه پروژه(تومان)
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
-                                                    colspan="1" aria-label="معرف: activate to sort column ascending">
-                                                    معرف
+                                                    colspan="1" aria-label="درصد تکمیلی پروژه: activate to sort column ascending">
+                                                    درصد تکمیلی پروژه
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
                                                     colspan="1"
-                                                    aria-label="نوع پروژه: activate to sort column ascending">نوع پروژه
+                                                    aria-label="نماد اعتماد: activate to sort column ascending">نماد اعتماد
                                                 </th>
                                                 <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1"
-                                                    colspan="1" aria-label="عملیات: activate to sort column ascending">
-                                                    عملیات
+                                                    colspan="1" aria-label="درگاه پرداخت: activate to sort column ascending">
+                                                    درگاه پرداخت
                                                 </th>
                                             </tr>
                                             </thead>
@@ -106,20 +106,28 @@ $row_member = $hasuser->rowCount();
 
                                             <tr role="row" class="odd">
                                                 <td class="sorting_1"><?php echo $item->name ?></td>
-                                                <td><?php echo $item->phone ?></td>
-                                                <td><?php if ($item->referencer == null) {
-                                                        echo "معرفی ندارد";
-                                                    } else {
-                                                        echo $item->referencer;
-                                                    } ?></td>
-                                                <td><?php echo $item->project_type ?></td>
+                                                <td><?php echo $item->price ?></td>
+                                                <td>%<?php echo $item->project_status?> </td>
+                                                <td><?php if($item->enamad == 0){
+
+                                                        echo 'اینمادی ثبت نشده';
+
+                                                    }else{
 
 
-                                                <td>
+                                                        echo 'اینماد ثبت شده';
+                                                    }?></td>
 
-                                                    <a href="./customer-projects.php?customer_id=<?php echo $item->id ?>"><button class="btn btn-block btn-info btn-flat" type="button" >نمایش پروژه ها</button></a>
 
-                                                </td>
+                                                <td><?php if($item->payment == 0){
+
+                                                        echo 'درگاهی ثبت نشده';
+
+                                                    }else{
+
+
+                                                        echo 'درگاه ثبت شده';
+                                                    }?></td>
                                             </tr>
 
                                             </tbody>
