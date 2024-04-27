@@ -8,6 +8,11 @@ $hasuser = $conn->query($sql);
 $hasuser->execute();
 $data = $hasuser->rowCount();
 
+$sql_number_project = "SELECT * FROM `project`";
+$project_number = $conn->query($sql_number_project);
+$project_number->execute();
+$project_rowcount = $project_number->rowCount();
+
 
 
 ?>
@@ -114,7 +119,7 @@ if (isset($_GET['userlogin'])){?>
           <!-- small box -->
           <div class="small-box bg-info">
             <div class="inner">
-              <h3>۱۵۰</h3>
+              <h3><?php  echo $project_rowcount?></h3>
 
               <p> پروژه ها</p>
             </div>

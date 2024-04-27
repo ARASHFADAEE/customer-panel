@@ -2,11 +2,20 @@
 include_once './config/loader.php';
 $auth->is_login();
 
-$sql = "SELECT * FROM `customers`";
-$hasuser = $conn->query($sql);
-$hasuser->execute();
-$data = $hasuser->fetchAll(PDO::FETCH_OBJ);
-$row_member = $hasuser->rowCount();
+$sql = "SELECT * FROM `project` WHERE `id`=1 ";
+$sql_user = "SELECT * FROM `customers` ";
+
+$hasproject = $conn->prepare($sql);
+$hasproject->execute();
+$data = $hasproject->fetch(PDO::FETCH_OBJ);
+$row_member = $hasproject->rowCount();
+
+
+
+
+$user_name = $conn->query($sql_user);
+$user_name->execute();
+$data_name = $user_name->fetchAll(PDO::FETCH_OBJ);
 
 ?>
 
@@ -88,7 +97,7 @@ $row_member = $hasuser->rowCount();
         <div class="content">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">افزودن مشتری</h3>
+                    <h3 class="card-title">اویرایش پروژه</h3>
                 </div>
 
 
@@ -99,22 +108,22 @@ $row_member = $hasuser->rowCount();
                     <div class="card-body">
                         <div class="form-group ">
                             <label for="product-name">نام پروژه :</label>
-                            <input type="text" name="name" class="form-control"
+                            <input value="<?php echo $data->name?>" type="text" name="name" class="form-control"
                                    placeholder="نام پروژه را به صورت کامل وارد کنید">
                         </div>
                         <div class="form-group ">
                             <label for="product-price">هزینه پروژه(تومان)</label>
-                            <input type="number" class="form-control" name="phone" id="exampleInputPassword1"
+                            <input value="<?php echo $data->price?>" type="number" class="form-control" name="phone" id="exampleInputPassword1"
                                    placeholder="هزینه پروژه را به توماان وارد کنید">
                         </div>
                         <div class="form-group ">
                             <label for="product-price">درصد تکمیلی پروژه	</label>
-                            <input type="number" class="form-control" name="phone" id="exampleInputPassword1"
+                            <input value="<?php echo $data->project_status?>" type="number" class="form-control" name="phone" id="exampleInputPassword1"
                                    placeholder="به درصد وارد کنید برای مثال 80">
                         </div>
                         <div class="form-group">
                             <label>آیا نماد اعتماد ثبت شده؟</label>
-                            <select name="project_type" class="form-control select2 select2-hidden-accessible"
+                            <select value="<?php echo $data->name?>" name="project_type" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" tabindex="-1" aria-hidden="true">
                                 <option>بله</option>
                                 <option>اخیر</option>
@@ -138,17 +147,19 @@ $row_member = $hasuser->rowCount();
                                 <option>نامعلوم</option>
                             </select>
                         </div>
+
+
                         <div class="form-group">
                             <label>انتخاب مشتری</label>
                             <select name="project_type" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" tabindex="-1" aria-hidden="true">
                                 <?php
-                                foreach ($data
+                                foreach ($data_name
 
-                                as $key => $item){
+                                         as $key => $item){
 
-                                ?>
-                                <option><?php echo $item->name?></option>
+                                    ?>
+                                    <option><?php echo $item->name?></option>
 
                                 <?php }?>
 
@@ -163,6 +174,7 @@ $row_member = $hasuser->rowCount();
                     <div class="card-footer">
                         <button type="submit" name="save_customer" class="btn btn-primary">ذخیره مشتری</button>
                     </div>
+
                 </form>
 
 
