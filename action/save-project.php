@@ -34,6 +34,7 @@ if (isset($_POST['project-name']) && isset($_POST['project-price']) && isset($_P
         $project_type = $_POST['project_type'];
         $customer_phone=$_POST['customer_select'];
         $customer_id_int=$customer_id->id;
+        $customer_id_name=$customer_id->name;
 
         //sql
         $query = "INSERT INTO project SET  customer_id=? , name=? , price=? , project_status=? , payment=?, enamad=? , project_type=? ";
@@ -55,10 +56,10 @@ if (isset($_POST['project-name']) && isset($_POST['project-price']) && isset($_P
 
         //exe
         $stmt->execute();
-        $sms->send_sms_create_project($customer_phone, $project_name, 9703);
+        $sms->send_sms_create_project($customer_phone,$customer_id_name, $project_name, 10065);
 
         //redirect
-        header('location: ../add-project.php?add_project=true');
+        header('location: ../add-project.php?project=true');
     } catch (PDOException $e) {
         echo $e;
     }

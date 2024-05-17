@@ -43,8 +43,8 @@ $row_member = $hasproject->rowCount();
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <h3 class="card-title">مشتریان</h3>
-                            <h4 class="card-title" style="float: left;">تعداد مشتریان : <?php echo $row_member;?></h4>
+                            <h3 class="card-title">پروژه ها</h3>
+                            <h4 class="card-title" style="float: left;">تعداد پروژه ها : <?php echo $row_member;?></h4>
                         </div>
                         <!-- /.card-header -->
                         <div class="card-body">

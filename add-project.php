@@ -11,36 +11,23 @@ $row_member = $hasuser->rowCount();
 ?>
 
 
-<body class="hold-transition sidebar-mini">
-<?php if (isset($_GET['number']) && $_GET['number'] == 0) { ?>
+<link rel="stylesheet" href="@sweetalert2/theme-minimal/minimal.css">
 
-    <script>
-        Swal.fire({
-            icon: "error",
-            title: "اووووپس...",
-            text: "شماره مورد نظر نامعتبر میباشد",
-            footer: 'ناموسا شماره رو از کجات در اوردی؟'
-        });
-    </script>
-<?php } ?>
+<script src="sweetalert2/dist/sweetalert2.min.js"></script>
 
 
-<?php if (isset($_GET['add_customer']) && $_GET['add_customer'] == true) { ?>
-    <script>
 
-        Swal.fire({
-            icon: "success",
-            title: "        مشتری با موفقیت افزوده شد",
-            showConfirmButton: false,
-            timer: 1500
-        });
-
-    </script>
+<script>
+    Swal.fire({
+        icon: "error",
+        title: "اووووپس...",
+        text: "شماره مورد نظر نامعتبر میباشد",
+        footer: 'ناموسا شماره رو از کجات در اوردی؟'
+    });
+</script>
 
 
-    <?php
-}
-?>
+
 
 
 <?php if (isset($_GET['usernot']) && $_GET['usernot'] == true) { ?>
@@ -54,9 +41,10 @@ $row_member = $hasuser->rowCount();
         });
     </script>
 
-    <?php
+<?php
 }
 ?>
+
 <div class="wrapper">
 
     <!-- Navbar Start  -->
@@ -99,31 +87,26 @@ $row_member = $hasuser->rowCount();
                     <div class="card-body">
                         <div class="form-group ">
                             <label for="project-name">نام پروژه :</label>
-                            <input type="text" name="project-name" class="form-control"
-                                   placeholder="نام پروژه را به صورت کامل وارد کنید">
+                            <input type="text" name="project-name" class="form-control" placeholder="نام پروژه را به صورت کامل وارد کنید">
                         </div>
                         <div class="form-group ">
                             <label for="project-price">هزینه پروژه(تومان)</label>
-                            <input type="number" class="form-control" name="project-price" id="exampleInputPassword1"
-                                   placeholder="هزینه پروژه را به توماان وارد کنید">
+                            <input type="number" class="form-control" name="project-price" id="exampleInputPassword1" placeholder="هزینه پروژه را به توماان وارد کنید">
                         </div>
                         <div class="form-group ">
-                            <label for="project_status">درصد تکمیلی پروژه	</label>
-                            <input type="number" class="form-control" name="project_status" id="exampleInputPassword1"
-                                   placeholder="به درصد وارد کنید برای مثال 80">
+                            <label for="project_status">درصد تکمیلی پروژه </label>
+                            <input type="number" class="form-control" name="project_status" id="exampleInputPassword1" placeholder="به درصد وارد کنید برای مثال 80">
                         </div>
                         <div class="form-group">
                             <label>آیا نماد اعتماد ثبت شده؟</label>
-                            <select name="is_enamad" class="form-control select2 select2-hidden-accessible"
-                                    style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                    <option value="1">بله</option>
+                            <select name="is_enamad" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                                <option value="1">بله</option>
                                 <option value="0">اخیر</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>آیا در گاه پرداخت ثبت شده؟</label>
-                            <select name="is_dargah" class="form-control select2 select2-hidden-accessible"
-                                    style="width: 100%;" tabindex="-1" aria-hidden="true">
+                            <select name="is_dargah" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                 <option value="1">بله</option>
                                 <option value="0">اخیر</option>
                             </select>
@@ -131,8 +114,7 @@ $row_member = $hasuser->rowCount();
 
                         <div class="form-group">
                             <label>نوع پروژه</label>
-                            <select name="project_type" class="form-control select2 select2-hidden-accessible"
-                                    style="width: 100%;" tabindex="-1" aria-hidden="true">
+                            <select name="project_type" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                 <option>وردپرسی</option>
                                 <option>اختصاصی</option>
                                 <option>نامعلوم</option>
@@ -140,17 +122,16 @@ $row_member = $hasuser->rowCount();
                         </div>
                         <div class="form-group">
                             <label>انتخاب مشتری</label>
-                            <select name="customer_select" class="form-control select2 select2-hidden-accessible"
-                                    style="width: 100%;" tabindex="-1" aria-hidden="true">
+                            <select name="customer_select" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
                                 <?php
                                 foreach ($data
 
-                                as $key => $item){
+                                    as $key => $item) {
 
                                 ?>
-                                <option value='<?php echo $item->phone?>'><?php echo $item->name?></option>
+                                    <option value='<?php echo $item->phone ?>'><?php echo $item->name ?></option>
 
-                                <?php }?>
+                                <?php } ?>
 
                             </select>
                         </div>
@@ -188,6 +169,8 @@ $row_member = $hasuser->rowCount();
     <script src="plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
     <!-- AdminLTE App -->
     <script src="dist/js/adminlte.min.js"></script>
-</body>
 
-</html>
+
+    </body>
+
+    </html>
