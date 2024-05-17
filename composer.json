@@ -1,0 +1,5 @@
+{
+    "require": {
+        "crazymeeks/php-excel": "v2.0.0"
+    }
+}

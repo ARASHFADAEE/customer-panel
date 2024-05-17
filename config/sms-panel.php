@@ -42,7 +42,6 @@ class sms
     public function send_sms_welcome($phone , $paramt , $template_id )
     {
 
-        $this->send_sms_api($phone , $paramt ,$template_id);
 
         
     }
@@ -74,6 +73,14 @@ class sms
         ));
         $response = curl_exec($curl);
         curl_close($curl);
+    }
+
+
+    public function send_sms_create_project($phone,$paramt,$template_id){
+
+        $this->send_sms_api($phone , $paramt ,$template_id);
+
+
     }
 }
 

@@ -1,0 +1,30 @@
+{
+    "name": "crazymeeks/php-excel",
+    "description": "A wrapper of PhpSpreadsheet library",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Jeff Claud",
+            "email": "jeffclaud17@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "phpoffice/phpspreadsheet": "^1.8"
+    },
+    "autoload": {
+        "psr-4": {
+            "Crazymeeks\\": "src"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "8.5"
+    },
+    "repositories": {
+        "packagist.org": {
+          "type": "composer",
+          "url": "https://packagist.org"
+        }
+    }
+}

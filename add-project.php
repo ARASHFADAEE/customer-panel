@@ -88,44 +88,44 @@ $row_member = $hasuser->rowCount();
         <div class="content">
             <div class="card card-primary">
                 <div class="card-header">
-                    <h3 class="card-title">افزودن مشتری</h3>
+                    <h3 class="card-title">افزودن پروژه</h3>
                 </div>
 
 
                 <!-- /.card-header -->
                 <!-- form start -->
-                <form method="post" action="action/save-customer.php" role="form">
+                <form method="post" action="action/save-project.php" role="form">
 
                     <div class="card-body">
                         <div class="form-group ">
-                            <label for="product-name">نام پروژه :</label>
-                            <input type="text" name="name" class="form-control"
+                            <label for="project-name">نام پروژه :</label>
+                            <input type="text" name="project-name" class="form-control"
                                    placeholder="نام پروژه را به صورت کامل وارد کنید">
                         </div>
                         <div class="form-group ">
-                            <label for="product-price">هزینه پروژه(تومان)</label>
-                            <input type="number" class="form-control" name="phone" id="exampleInputPassword1"
+                            <label for="project-price">هزینه پروژه(تومان)</label>
+                            <input type="number" class="form-control" name="project-price" id="exampleInputPassword1"
                                    placeholder="هزینه پروژه را به توماان وارد کنید">
                         </div>
                         <div class="form-group ">
-                            <label for="product-price">درصد تکمیلی پروژه	</label>
-                            <input type="number" class="form-control" name="phone" id="exampleInputPassword1"
+                            <label for="project_status">درصد تکمیلی پروژه	</label>
+                            <input type="number" class="form-control" name="project_status" id="exampleInputPassword1"
                                    placeholder="به درصد وارد کنید برای مثال 80">
                         </div>
                         <div class="form-group">
                             <label>آیا نماد اعتماد ثبت شده؟</label>
-                            <select name="project_type" class="form-control select2 select2-hidden-accessible"
+                            <select name="is_enamad" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                <option>بله</option>
-                                <option>اخیر</option>
+                                    <option value="1">بله</option>
+                                <option value="0">اخیر</option>
                             </select>
                         </div>
                         <div class="form-group">
                             <label>آیا در گاه پرداخت ثبت شده؟</label>
-                            <select name="project_type" class="form-control select2 select2-hidden-accessible"
+                            <select name="is_dargah" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" tabindex="-1" aria-hidden="true">
-                                <option>بله</option>
-                                <option>اخیر</option>
+                                <option value="1">بله</option>
+                                <option value="0">اخیر</option>
                             </select>
                         </div>
 
@@ -140,7 +140,7 @@ $row_member = $hasuser->rowCount();
                         </div>
                         <div class="form-group">
                             <label>انتخاب مشتری</label>
-                            <select name="project_type" class="form-control select2 select2-hidden-accessible"
+                            <select name="customer_select" class="form-control select2 select2-hidden-accessible"
                                     style="width: 100%;" tabindex="-1" aria-hidden="true">
                                 <?php
                                 foreach ($data
@@ -148,7 +148,7 @@ $row_member = $hasuser->rowCount();
                                 as $key => $item){
 
                                 ?>
-                                <option><?php echo $item->name?></option>
+                                <option value='<?php echo $item->phone?>'><?php echo $item->name?></option>
 
                                 <?php }?>
 
